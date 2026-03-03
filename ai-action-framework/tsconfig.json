@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "outDir": "./dist"
+  },
+  "include": [
+    "src/**/*.ts",
+    "lambda/**/*.ts",
+    "lib/**/*.ts",
+    "test/**/*.ts",
+    "lambda/registryHandler.ts",
+    "lambda/index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "cdk.out",
+    "dist"
+  ]
+}

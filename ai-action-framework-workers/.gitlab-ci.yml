@@ -1,0 +1,45 @@
+image: node:18
+
+stages:
+  - build
+  - bootstrap
+  - deploy
+
+variables:
+  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+  AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+  CDK_STACK_NAME: "DeployWorkersStack"
+  CDK_OUT_DIR: "cdk.out"
+
+cache:
+  paths:
+    - node_modules/
+    - lambda-layer/nodejs/node_modules/
+
+
+before_script:
+  - npm install -g aws-cdk
+  - npm install
+  - cd lambda-layer/nodejs && npm install && cd ../../
+
+build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+
+bootstrap:
+  stage: bootstrap
+  script:
+    - cdk bootstrap aws://$AWS_ACCOUNT_ID/$AWS_DEFAULT_REGION
+
+deploy:
+  stage: deploy
+  script:
+    - cdk deploy --require-approval never
+  environment:
+    name: production
+    url: https://$CI_PROJECT_PATH_SLUG.$CI_ENVIRONMENT_SLUG.gitlab.io

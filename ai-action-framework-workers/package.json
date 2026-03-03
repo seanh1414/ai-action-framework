@@ -1,0 +1,28 @@
+{
+  "name": "deploy_workers",
+  "version": "0.1.0",
+  "bin": {
+    "deploy_workers": "bin/deploy_workers.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.0.0",
+    "aws-sdk": "^2.1637.0",
+    "axios": "^0.24.0",
+    "constructs": "^10.0.0",
+    "dotenv": "^16.4.5",
+    "source-map-support": "^0.5.16",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.22",
+    "@types/node": "^14.14.33",
+    "jest": "^26.6.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
+}
